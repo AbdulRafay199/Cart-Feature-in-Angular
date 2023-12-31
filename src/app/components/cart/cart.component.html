@@ -1,0 +1,29 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Your Cart</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="d-flex justify-content-center align-items-center flex-row mb-3" *ngFor="let each of myitems">
+                <img class="img-fluid me-3" [src]="each.thumbnail" alt="" width="32px" height="32px" style="aspect-ratio: 1;">
+                <h6 class="fw-bold me-auto mb-0">{{each.title}}</h6>
+                <p class="mb-0">price: {{each.price | currency : "Rs." }}</p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center flex-row mt-5">
+                <h6 class="me-auto" style="visibility: hidden;">Total Items: {{myitems.length}}</h6>
+                <h6>Qty: {{myitems.length}}</h6>
+            </div>
+            <div class="d-flex justify-content-center align-items-center flex-row">
+                <h6 class="me-auto" style="visibility: hidden;">Total Price: {{totalprice | currency : "Rs."}}</h6>
+                <h6>Total Price: {{totalprice | currency : "Rs."}}</h6>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="clearCart()">Clear Cart</button>
+          <button type="button" class="btn btn-success">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>

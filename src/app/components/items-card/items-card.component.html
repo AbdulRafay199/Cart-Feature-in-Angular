@@ -1,0 +1,20 @@
+<div class="card mb-3" style="max-width: 540px; min-height: 200px;">
+    <div class="row g-0 h-100">
+      <div class="col-md-4">
+        <img [src]="products.thumbnail" class="img-fluid rounded-start h-100" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{products.title}}</h5>
+          <p class="card-text my-1">{{products.description}}</p>
+          <app-star-rating [rate]="products.rating" [total]="5"></app-star-rating>
+          <p class="my-1">Price: {{products.price | currency : 'Rs.'}}</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+          <div class="d-flex flex-row">
+            <button class="btn btn-success btn-sm me-3">View Product</button>
+            <button class="btn btn-dark btn-sm d-flex align-items-center justify-content-center" (click)="addtocart()"><span class="material-symbols-outlined me-1">shopping_cart</span> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
