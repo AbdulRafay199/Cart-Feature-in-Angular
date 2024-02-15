@@ -27,13 +27,20 @@ export class ItemsCardComponent {
       "thumbnail": "...",
       "images": ["...", "...", "..."]
     }
+  
+    cartArray:any[] = []
 
 
   addtocart = ()=>{
     console.log(this.products)
-    this.store.dispatch(add({product: this.products}))
-    this.store.select("counter").subscribe(data=>{
-      console.log("cart items: ",data.cartItems)
-    })
+    this.cartArray = JSON.parse(localStorage.getItem('cart') || "[]")
+    this.cartArray.push(this.products)
+    localStorage.removeItem('cart')
+    localStorage.setItem('cart',JSON.stringify(this.cartArray))
+    this.store.dispatch(add({product: JSON.parse(localStorage.getItem('cart') || "[]")}))
+    // this.store.select("counter").subscribe(data=>{
+    //   localStorage.removeItem('cart')
+    //   localStorage.setItem('cart',JSON.stringify(data.cartItems))
+    // })
   }
 }

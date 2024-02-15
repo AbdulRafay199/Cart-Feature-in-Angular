@@ -3,9 +3,20 @@
         <h2 class="fw-bold">Fragrances</h2>
         <p>Welcome to our extensive mobile phone catalog, where innovation and style converge to redefine your digital experience. </p>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="status">
         <div class="col-6" *ngFor="let items of productsList.products">
             <app-items-card [products]="items"></app-items-card>
+        </div>
+    </div>
+    <div class="row w-100" *ngIf="!status">
+        <div class="col-6" *ngFor="let i of skeletons">  
+            <div class="mb-3 me-3">
+                <p-skeleton styleClass="mb-2"></p-skeleton>
+                <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+                <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+                <p-skeleton height="2rem" styleClass="mb-2"></p-skeleton>
+                <p-skeleton width="10rem" height="4rem"></p-skeleton>
+            </div>   
         </div>
     </div>
 </div>

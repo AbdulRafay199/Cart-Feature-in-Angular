@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed">
     <div class="container-fluid">
       <a class="navbar-brand d-flex align-items-center justify-content-center flex-row" href="#">
         <img src="assets/shopnowlogo.png" alt="Bootstrap" width="64" height="64"> <p class="fs-5 fw-bold mb-0">SHOP NOW</p>
@@ -18,13 +18,7 @@
           </li>
         </ul>
         <form class="d-flex justify-content-center align-items-center" role="search">
-            <!-- <mat-icon class="position-relative fs-2 w-25" aria-hidden="false" aria-label="Example home icon" fontIcon="shopping_cart">
-              <span class="position-absolute top-0 start-50 translate-middle p-2 bg-danger border border-light rounded-circle">
-                <span class="visually-hidden">New alerts</span>
-              </span>
-            </mat-icon> -->
-          <!-- <a class="nav-link text-light mb-0 me-3" href="#">{{count}}</a> -->
-          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Cart Item: {{count}}</button>
+          <i class="pi pi-shopping-cart me-3" style="color: black; font-size: 1.5rem; cursor: pointer;" pBadge [value]="count.toLocaleString()" severity="success" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
           <app-cart></app-cart>
         </form>
       </div>
