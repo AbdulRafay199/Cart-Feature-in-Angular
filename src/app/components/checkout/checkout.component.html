@@ -1,0 +1,16 @@
+<form novalidate (ngSubmit)="createToken()" [formGroup]="checkoutForm">
+  <div class="mx-auto w-25 mt-5" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; padding: 15px; border-radius: 15px;">
+    <h4 class="my-5 fw-bold text-center">Enter Payment Details</h4>
+    <input type="text" [formControl]="name" id="name" placeholder="Your Name" class="form-control mb-4">
+    <input type="email" [formControl]="email" id="email" placeholder="Your Email" class="form-control mb-4">
+    <ngx-stripe-card [stripe]="stripe" class="my-3"></ngx-stripe-card>
+    <button class="btn btn-success my-5 w-100 d-flex justify-content-center align-items-center flex-row mb-4">
+      <div class="spinner-border spinner-border-sm text-light d-none" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="fs-6 m-0 mx-2">Pay Now</p>
+    </button>
+    <!-- <button type="submit" class="btn btn-success my-5 w-75">Pay Now</button> -->
+  </div>
+</form>
+<!-- <h1>hello</h1> -->
