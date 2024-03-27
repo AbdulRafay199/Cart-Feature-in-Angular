@@ -1,25 +1,15 @@
-FROM node:20
-FROM base AS deps
-
-WORKDIR /projects/counterApp
-
-COPY package*.json ./
-
-FROM base AS builder
-WORKDIR /projects/counterApp
-COPY --from=deps /projects/counterApp/node_modules ./node_modules
-
-
-# Install app dependencies
-RUN npm install
-
-# Copy the application code into the container
+### STAGE 1: Build ###
+FROM node:18-alpine3.18 AS build
+WORKDIR /app
 COPY . .
+RUN npm install --force
+RUN npm run build
+### STAGE 2: Run ###
+# FROM nginx:1.17.1-alpine
+# COPY nginx.conf /etc/nginx/nginx.conf
+# COPY --from=build /app/dist/counter-app /usr/share/nginx/html
 
-# Expose port 4200 for the development server
-EXPOSE 4200
+FROM httpd:alpine3.15
 
-# Define the command to run your application
-CMD ["ng", "serve"]
-
-
+WORKDIR /usr/local/apache2/htdocs
+COPY --from=build /app/dist/counter-app .
